@@ -1,0 +1,8 @@
+#!/bin/bash
+
+./install/addPHPRepository 
+./install/apache2 -y
+./install/mariaDB -y
+./install/allPHPVersions
+./phpStettings/setLinks -y
+./setVersion/php8.1

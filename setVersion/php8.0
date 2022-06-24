@@ -1,0 +1,9 @@
+#!/bin/bash
+
+sudo update-alternatives --set php /usr/bin/php8.0
+ 
+sudo a2dismod php*
+sudo a2enmod php8.0
+sudo systemctl restart apache2
+ 
+php -v
