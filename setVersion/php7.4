@@ -2,7 +2,7 @@
 
 sudo update-alternatives --set php /usr/bin/php7.4
  
-sudo a2dismod php*
+./setVersion/a2dismodAll
 sudo a2enmod php7.4
 sudo systemctl restart apache2
  

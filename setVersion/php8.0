@@ -2,7 +2,7 @@
 
 sudo update-alternatives --set php /usr/bin/php8.0
  
-sudo a2dismod php*
+./setVersion/a2dismodAll
 sudo a2enmod php8.0
 sudo systemctl restart apache2
  
