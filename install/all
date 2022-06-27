@@ -3,6 +3,6 @@
 ./install/addPHPRepository 
 ./install/apache2 -y
 ./install/mariaDB -y
-./install/allPHP
+./install/phpAll
 ./phpStettings/setLinks -y
 ./setVersion/php8.1
