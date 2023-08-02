@@ -3,7 +3,7 @@
 Easy to change php Version
 
 ## Install
-Apache, MariaDB, PHP7.2 - PHP 8.1
+Apache, MariaDB, PHP7.2 - PHP 8.2
 
 ````
 ./install/all
@@ -23,7 +23,7 @@ Add PHP Repository
 addPHPRepository
 ````
 
-PHP7.2 - PHP8.1
+PHP7.2 - PHP8.2
 ````
 ./install/allPHP
 ````

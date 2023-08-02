@@ -5,4 +5,4 @@
 ./install/mariaDB -y
 ./install/phpAll
 ./phpStettings/setLinks -y
-./setVersion/php8.1
+./setVersion/php8.2
