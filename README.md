@@ -27,19 +27,23 @@ PHP7.2 - PHP8.2
 ````
 ./install/allPHP
 ````
-PHP8.1
+PHP 8.2
+````
+./install/php8.2
+````
+PHP 8.1
 ````
 ./install/php8.1
 ````
-PHP8.0
+PHP 8.0
 ````
 ./install/php8.0
 ````
-PHP7.4
+PHP 7.4
 ````
 ./install/php7.4
 ````
-PHP7.2
+PHP 7.2
 ````
 ./install/php7.2
 ````
@@ -54,20 +58,24 @@ Use your php config file
 ````
 
 ## Set PHP Version
-PHP8.1
+PHP 8.2
+````
+./setVersion/php8.2
+````
+PHP 8.1
 ````
 ./setVersion/php8.1
 ````
 
-PHP8.0
+PHP 8.0
 ````
 ./setVersion/php8.0
 ````
-PHP7.4
+PHP 7.4
 ````
 ./setVersion/php7.4
 ````
-PHP7.2
+PHP 7.2
 ````
 ./setVersion/php7.2
 ````
