@@ -6,3 +6,5 @@
 ./install/php8.1 -y
 ./install/php8.2 -y
 ./install/php8.3 -y
+./install/php8.4 -y
+./install/php8.5 -y

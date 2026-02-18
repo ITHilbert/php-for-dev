@@ -3,7 +3,7 @@
 Easy to change php Version
 
 ## Install
-Apache, MariaDB, PHP7.2 - PHP 8.2
+Apache, MariaDB, PHP7.2 - PHP 8.5
 
 ````
 ./install/all
@@ -23,9 +23,21 @@ Add PHP Repository
 addPHPRepository
 ````
 
-PHP7.2 - PHP8.2
+PHP7.2 - PHP8.5
 ````
 ./install/allPHP
+````
+PHP 8.5
+````
+./install/php8.5
+````
+PHP 8.4
+````
+./install/php8.4
+````
+PHP 8.3
+````
+./install/php8.3
 ````
 PHP 8.2
 ````
@@ -58,6 +70,18 @@ Use your php config file
 ````
 
 ## Set PHP Version
+PHP 8.5
+````
+./setVersion/php8.5
+````
+PHP 8.4
+````
+./setVersion/php8.4
+````
+PHP 8.3
+````
+./setVersion/php8.3
+````
 PHP 8.2
 ````
 ./setVersion/php8.2
