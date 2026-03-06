@@ -1,0 +1,5 @@
+#!/bin/bash
+
+sudo apt remove --purge -y mariadb-server mariadb-client mariadb-common
+sudo apt autoremove -y
+echo "MariaDB wurde deinstalliert."

@@ -1,0 +1,8 @@
+#!/bin/bash
+
+./uninstall/apache2 -y
+./uninstall/mariaDB -y
+./uninstall/phpAll
+./uninstall/phpmyadmin -y
+
+echo "Alles wurde deinstalliert."

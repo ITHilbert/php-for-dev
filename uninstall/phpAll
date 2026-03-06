@@ -1,0 +1,10 @@
+#!/bin/bash
+
+./uninstall/php7.2 -y
+./uninstall/php7.4 -y
+./uninstall/php8.0 -y
+./uninstall/php8.1 -y
+./uninstall/php8.2 -y
+./uninstall/php8.3 -y
+./uninstall/php8.4 -y
+./uninstall/php8.5 -y

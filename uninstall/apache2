@@ -1,0 +1,5 @@
+#!/bin/bash
+
+sudo apt remove --purge -y apache2 apache2-utils apache2-bin apache2.2-common
+sudo apt autoremove -y
+echo "Apache2 wurde deinstalliert."

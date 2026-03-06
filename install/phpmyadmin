@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# Hole die neueste phpMyAdmin Version
+cd /tmp
+wget https://www.phpmyadmin.net/downloads/phpMyAdmin-latest-all-languages.tar.gz
+tar xzfv phpMyAdmin-latest-all-languages.tar.gz
+
+# Verschiebe nach /var/www/html
+sudo rm -rf /var/www/html/phpmyadmin
+sudo mv phpMyAdmin-*-all-languages /var/www/html/phpmyadmin
+sudo rm phpMyAdmin-latest-all-languages.tar.gz
+
+# Setze korrekte Rechte
+sudo chown -R www-data:www-data /var/www/html/phpmyadmin
+sudo mkdir /var/www/html/phpmyadmin/tmp
+sudo chown -R www-data:www-data /var/www/html/phpmyadmin/tmp
+sudo chmod 777 /var/www/html/phpmyadmin/tmp
+
+# Lege config.inc.php an, falls etwas eingerichtet werden muss (optional)
+# sudo cp /var/www/html/phpmyadmin/config.sample.inc.php /var/www/html/phpmyadmin/config.inc.php
+# Blowfish secret setzen (vereinfacht)
+# sudo sed -i "s/\['blowfish_secret'\] = '';/\['blowfish_secret'\] = '$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)';/" /var/www/html/phpmyadmin/config.inc.php
+
+echo "phpMyAdmin wurde erfolgreich unter /var/www/html/phpmyadmin installiert."
