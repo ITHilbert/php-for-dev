@@ -59,6 +59,44 @@ PHP 7.2
 ````
 ./install/php7.2
 ````
+
+phpMyAdmin
+````
+./install/phpmyadmin
+````
+
+## Uninstall
+
+Apache, MariaDB, PHP7.2 - PHP 8.5
+````
+./uninstall/all
+````
+
+Apache
+````
+./uninstall/apache2
+````
+
+MariaDB
+````
+./uninstall/mariaDB
+````
+
+phpMyAdmin
+````
+./uninstall/phpmyadmin
+````
+
+All PHP Versions
+````
+./uninstall/phpAll
+````
+
+Specific PHP Version (e.g., PHP 8.5)
+````
+./uninstall/php8.5
+````
+
 ## Config PHP
 Your php settings
 ````
