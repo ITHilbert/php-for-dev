@@ -1,22 +1,37 @@
 #!/bin/bash
 
-#apache
-sudo ln -n ./phpStettings/my_php_settings.ini /etc/php/7.2/apache2/conf.d/my_php_settings.ini
-sudo ln -n ./phpStettings/my_php_settings.ini /etc/php/7.4/apache2/conf.d/my_php_settings.ini
-sudo ln -n ./phpStettings/my_php_settings.ini /etc/php/8.0/apache2/conf.d/my_php_settings.ini
-sudo ln -n ./phpStettings/my_php_settings.ini /etc/php/8.1/apache2/conf.d/my_php_settings.ini
-sudo ln -n ./phpStettings/my_php_settings.ini /etc/php/8.2/apache2/conf.d/my_php_settings.ini
-sudo ln -n ./phpStettings/my_php_settings.ini /etc/php/8.3/apache2/conf.d/my_php_settings.ini
-sudo ln -n ./phpStettings/my_php_settings.ini /etc/php/8.4/apache2/conf.d/my_php_settings.ini
-sudo ln -n ./phpStettings/my_php_settings.ini /etc/php/8.5/apache2/conf.d/my_php_settings.ini
-#client
-sudo ln -n ./phpStettings/my_php_settings.ini /etc/php/7.2/cli/conf.d/my_php_settings.ini
-sudo ln -n ./phpStettings/my_php_settings.ini /etc/php/7.4/cli/conf.d/my_php_settings.ini
-sudo ln -n ./phpStettings/my_php_settings.ini /etc/php/8.0/cli/conf.d/my_php_settings.ini
-sudo ln -n ./phpStettings/my_php_settings.ini /etc/php/8.1/cli/conf.d/my_php_settings.ini
-sudo ln -n ./phpStettings/my_php_settings.ini /etc/php/8.2/cli/conf.d/my_php_settings.ini
-sudo ln -n ./phpStettings/my_php_settings.ini /etc/php/8.3/cli/conf.d/my_php_settings.ini
-sudo ln -n ./phpStettings/my_php_settings.ini /etc/php/8.4/cli/conf.d/my_php_settings.ini
-sudo ln -n ./phpStettings/my_php_settings.ini /etc/php/8.5/cli/conf.d/my_php_settings.ini
+# Hole den absoluten Pfad zum Verzeichnis des Skripts
+DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
+INI_FILE="$DIR/my_php_settings.ini"
 
-sudo systemctl restart apache2 
+# Überprüfen, ob die Datei existiert
+if [ ! -f "$INI_FILE" ]; then
+    echo "Fehler: $INI_FILE nicht gefunden!"
+    exit 1
+fi
+
+echo "Setze symbolische Links für $INI_FILE..."
+
+# Durch alle verfügbaren PHP Versionen in /etc/php/ iterieren
+for v in /etc/php/*; do
+    if [ -d "$v" ]; then
+        # Für apache2, cli, fpm, cgi
+        for sapi in apache2 cli fpm cgi; do
+            conf_dir="$v/$sapi/conf.d"
+            if [ -d "$conf_dir" ]; then
+                # Alte fehlerhafte harte Links ohne 99-Prefix löschen, um Konflikte zu vermeiden
+                if [ -f "$conf_dir/my_php_settings.ini" ] || [ -L "$conf_dir/my_php_settings.ini" ]; then
+                    sudo rm -f "$conf_dir/my_php_settings.ini"
+                fi
+                
+                # Symbolischen Link anlegen (99- Prefix, damit es sicher nach der php.ini und anderen geladen wird)
+                sudo ln -sf "$INI_FILE" "$conf_dir/99-my_php_settings.ini"
+                echo "Link erstellt: $conf_dir/99-my_php_settings.ini"
+            fi
+        done
+    fi
+done
+
+echo "Starte Apache neu..."
+sudo systemctl restart apache2
+echo "Erledigt!"
